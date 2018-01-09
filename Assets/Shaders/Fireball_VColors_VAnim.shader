@@ -12,11 +12,11 @@ Shader "Custom/Fireball_VColors_VAnim"
 		_Bloom("Bloom", Range(0,1)) = 0.5
 	}
 	SubShader {
-		Tags { "RenderType" = "Opaque" }
+		Tags { "Queue"="Transparent" "RenderType" = "Opaque" }
 		LOD 200
 		
 		CGPROGRAM
-		#pragma surface surf Standard noforwardadd vertex:vert
+		#pragma surface surf Standard noforwardadd vertex:vert alpha:fade
 		#pragma target 3.0
 
 		sampler2D _MainTex;
@@ -54,9 +54,14 @@ Shader "Custom/Fireball_VColors_VAnim"
 
 			v.vertex.x += (v.normal.x / localDistance)*(v.vertex.x * 2) * sx * cx * 0.1 * (localDistance * 3) + (rand(v.vertex.xyz)*0.01 * localDistance);
 			v.vertex.y += (v.normal.y / localDistance)*(v.vertex.y * 2) * sy * cy * 0.1 * (localDistance * 1);
-			v.vertex.z += (v.normal.z / localDistance)*(v.vertex.z * 2) * sy * 0.01 * (localDistance * 1) + (rand(v.vertex.xyz)*0.01 * localDistance);
+			v.vertex.z += (v.normal.z / localDistance)*(v.vertex.z * 2) * sy * 0.01 * (localDistance * 1) + (rand(v.vertex.xyz) * 0.01 * localDistance);
 
-			v.vertex.z += sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance) * 1;
+			v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance) * 1) * localDistance*0.2;
+			
+			//Comment this in to get a wave in X
+			//v.vertex.x += (sin(_Time.y * 15 + v.vertex.z * 1* localDistance) * 0.2) / max(localDistance,2);
+
+			//v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance));
 
 			// Vertex in world space
 			float4 ws_v = mul(unity_ObjectToWorld, v.vertex);
@@ -81,7 +86,9 @@ Shader "Custom/Fireball_VColors_VAnim"
 			output.Albedo = input.color;
 			output.Metallic = 0;
 			output.Smoothness = 0;
-			output.Alpha = input.color.a;
+		
+			float4 col = tex2D(_MainTex, input.uv_MainTex);
+			output.Alpha = col.a;
 
 			output.Emission = (input.color.rgb * _Bloom);
 		}
