@@ -43,6 +43,23 @@ Shader "Custom/Fireball_VColors_VAnim"
 			return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 45.5432))) * 8.5453);
 		}
 
+		float wave(float c)
+		{
+			float amplitude = 1.0;
+			float frequency = 1.0;
+
+			float y = sin(c * frequency);
+			float t = 0.01 * (-_Time.y * 130);
+
+			y += sin(c*frequency*2.1 + t)*4.5;
+			y += sin(c*frequency*1.72 + t*1.121)*4.0;
+			y += sin(c*frequency*2.221 + t*0.437)*5.0;
+			y += sin(c*frequency*3.1122 + t*4.269)*2.5;
+			y *= amplitude*0.06;
+
+			return y;
+		}
+
 		void vert(inout appdata_full v)
 		{
 			// Object space distance
@@ -68,6 +85,12 @@ Shader "Custom/Fireball_VColors_VAnim"
 
 			//v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance));
 
+
+
+
+
+
+
 			// Vertex in world space
 			float4 ws_v = mul(unity_ObjectToWorld, v.vertex);
 
@@ -83,22 +106,7 @@ Shader "Custom/Fireball_VColors_VAnim"
 			v.vertex = mul(unity_WorldToObject, ws_v);
 		}
 
-		float wave(float c)
-		{
-			float amplitude = 1.0;
-			float frequency = 1.0;
 
-			float y = sin(c * frequency);
-			float t = 0.01 * (-_Time.y * 130);
-
-			y += sin(c*frequency*2.1 + t)*4.5;
-			y += sin(c*frequency*1.72 + t*1.121)*4.0;
-			y += sin(c*frequency*2.221 + t*0.437)*5.0;
-			y += sin(c*frequency*3.1122 + t*4.269)*2.5;
-			y *= amplitude*0.06;
-
-			return y;
-		}
 
 		void surf (Input input, inout SurfaceOutputStandard output) 
 		{
