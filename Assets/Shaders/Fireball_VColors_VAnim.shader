@@ -75,7 +75,6 @@ Shader "Custom/Fireball_VColors_VAnim"
 
 			v.vertex.x += ((v.normal.x / localDistance)*(v.vertex.x * 2) * sx * cx * 0.1 * (localDistance * 1) + (rand(v.vertex.xyz)*0.01 * localDistance)) / (2-intensity);
 			v.vertex.y += ((v.normal.y / localDistance)*(v.vertex.y * 2) * sy * cy * 0.1 * (localDistance * 1)) / (1-intensity);
-			
 			v.vertex.z += ((v.normal.z / localDistance)*(v.vertex.z * 2) * sy * 0.1 * (localDistance * 1) + (rand(v.vertex.xyz) * 0.05 * localDistance)) / (1-intensity);
 
 			v.vertex.z += (sin(_Time.y * 50 + v.vertex.z * localDistance) *5) * localDistance*0.01;
