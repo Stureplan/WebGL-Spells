@@ -52,14 +52,17 @@ Shader "Custom/Fireball_VColors_VAnim"
 			float sy = sin(_Time.y * _Speed + v.vertex.y) * 1;
 			float cy = cos(_Time.y * _Speed + v.vertex.y) * 2;
 
-			v.vertex.x += (v.normal.x / localDistance)*(v.vertex.x * 2) * sx * cx * 0.1 * (localDistance * 3) + (rand(v.vertex.xyz)*0.01 * localDistance);
-			v.vertex.y += (v.normal.y / localDistance)*(v.vertex.y * 2) * sy * cy * 0.1 * (localDistance * 1);
-			v.vertex.z += (v.normal.z / localDistance)*(v.vertex.z * 2) * sy * 0.01 * (localDistance * 1) + (rand(v.vertex.xyz) * 0.01 * localDistance);
+			float intensity = (v.color.r + v.color.g + v.color.b)*2;
 
-			v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance) * 1) * localDistance*0.2;
+			v.vertex.x += ((v.normal.x / localDistance)*(v.vertex.x * 2) * sx * cx * 0.05 * (localDistance * 1) + (rand(v.vertex.xyz)*0.01 * localDistance)) / (2-intensity);
+			v.vertex.y += ((v.normal.y / localDistance)*(v.vertex.y * 2) * sy * cy * 0.1 * (localDistance * 1)) / (1-intensity);
+			
+			v.vertex.z += ((v.normal.z / localDistance)*(v.vertex.z * 2) * sy * 0.1 * (localDistance * 1) + (rand(v.vertex.xyz) * 0.05 * localDistance)) / (1-intensity);
+
+			v.vertex.z += (sin(_Time.y * 50 + v.vertex.z * localDistance) *2) * localDistance*0.01;
 			
 			//Comment this in to get a wave in X
-			//v.vertex.x += (sin(_Time.y * 15 + v.vertex.z * 1* localDistance) * 0.2) / max(localDistance,2);
+			//v.vertex.x += (sin(_Time.y * 0.1 + v.vertex.z * 1* localDistance) * 0.2) / max(localDistance,2) * v.normal.x;
 
 			//v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance));
 

@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 65d52c443f46e7f4aa76ac36008e11cc
-timeCreated: 1515494854
+guid: 056426db977ac0745bf3df5044cd90a7
+timeCreated: 1515685063
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: fireball_stretched_head
+    100004: fireball_stretched_tail
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: fireball_stretched
+    400002: fireball_stretched_head
+    400004: fireball_stretched_tail
+    2300000: fireball_stretched_head
+    2300002: fireball_stretched_tail
+    3300000: fireball_stretched_head
+    3300002: fireball_stretched_tail
+    4300000: fireball_stretched_head
+    4300002: fireball_stretched_tail
   materials:
     importMaterials: 0
     materialName: 0
@@ -60,7 +67,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
