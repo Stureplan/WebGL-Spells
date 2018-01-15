@@ -19,7 +19,7 @@
 
 		Pass
 		{
-			Blend DstColor Zero
+			Blend One One
 			ZWrite Off
 
 			CGPROGRAM
@@ -58,7 +58,6 @@
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv0 = TRANSFORM_TEX(v.texcoord0, _MainTex);
 				o.uv1 = TRANSFORM_TEX(v.texcoord1, _NoiseTex);
-				o.uv1 += _Time.yy * _Intensity.zw;
 				o.vertexColor = v.vertexColor;
 
 				return o;
@@ -66,14 +65,29 @@
 			
 			fixed4 frag (VertexOutput i) : SV_Target
 			{
-				float4 noise = tex2D(_NoiseTex, i.uv1);
-				float2 offset = (noise.rg * 2 - 1) * _Intensity.xy;
-				float2 uv_n = i.uv0 + offset;
-				float4 color = tex2D(_MainTex, uv_n);
-				float3 emissive = lerp(float3(1, 1, 1), color.rgb * i.vertexColor.rgb, color.a * i.vertexColor.a);
-				//float3 emissive = (color.rgb * i.vertexColor.rgb) * (color.a * i.vertexColor.a);
+				float lt = i.vertexColor.a;
+				
+				i.uv1 += _Time.yy * _Intensity.zw;
 
-				return float4(emissive,1);
+				// Sample noise with offset noise UV's
+				float4 noise = tex2D(_NoiseTex, i.uv1);
+
+				//i.uv0 -= ((noise.rg) - 0.5) * 2 * 0.1 * lt;
+				i.uv0 += (noise.rg * 2 - 1) * _Intensity.xy;
+				i.uv0 -= _Intensity.xy;
+
+				//float2 offset = (noise.rg * 2 - 1) * _Intensity.xy;
+				float4 color = tex2D(_MainTex, i.uv0);
+				//float3 emissive = lerp(float3(1, 1, 1), color.rgb * i.vertexColor.rgb, color.a);
+
+				noise.rgb = clamp(noise.rgb, float3(0, 0, 0), float3(1, 1, 1)) * color.a*lt;
+				float n = noise.r -(1.0001-lt+noise.g);
+				clip(n);
+				//float a = lerp(0, (lt*color.a), n * 10);
+				float3 emissive = (color.rgb * i.vertexColor.rgb);// *(color.a * lt);
+
+
+				return float4(emissive,0);
 			}
 			ENDCG
 		}

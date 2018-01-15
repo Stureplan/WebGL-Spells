@@ -80,7 +80,7 @@ Shader "Custom/Fireball_VColors_VAnim"
 			v.vertex.z += (sin(_Time.y * 50 + v.vertex.z * localDistance) *5) * localDistance*0.01;
 			
 			//Comment this in to get a wave in X
-			//v.vertex.x += (sin(_Time.y * 0.1 + v.vertex.z * 1* localDistance) * 0.2) / max(localDistance,2) * v.normal.x;
+			v.vertex.x += (sin(_Time.y * 0.1 + v.vertex.z * 1* localDistance) * 0.2) / max(localDistance,2) * v.normal.x;
 
 			//v.vertex.z += (sin(_Time.y * 10 + v.vertex.z * 0.5 * localDistance));
 
