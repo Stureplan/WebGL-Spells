@@ -1,7 +1,4 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
-
-Shader "Custom/Fireball_VColors_VAnim" 
+﻿Shader "Custom/Fireball_VColors_VAnim" 
 {
 	Properties {
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
