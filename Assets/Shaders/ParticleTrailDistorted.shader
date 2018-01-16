@@ -3,7 +3,9 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_Intensity("Intensity", Float) = 1
+		_Frequency("Frequency", Float) = 1
+		_Amplitude("Amplitude", Float) = 1
+
 	}
 	SubShader
 	{
@@ -44,22 +46,21 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			float _Intensity;
+			float _Frequency;
+			float _Amplitude;
+
 
 			float3 distort(float3 v, float t)
 			{
-				float amplitude = 1;
-				float frequency = 1;
-
-
-				float range = distance(v.xyz, mul(unity_WorldToObject, float3(0,0,0)));
-
-
-				v.x += ((amplitude * sin(_Time.y*frequency)) * range);
-
-				v.xyz = mul(unity_WorldToObject, v.xyz);
+				t *= 5;
+				v.x += (_Amplitude * sin(_Time.y*_Frequency + v.z)) * t;
 
 				return v;
+			}
+
+			float rand(float3 co)
+			{
+				return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 45.5432))) * 8.5453);
 			}
 			
 			VertexOutput vert (VertexInput v)
@@ -67,11 +68,11 @@
 				VertexOutput o;
 				o.pos = v.vertex;
 
-				o.pos.xyz = distort(mul(unity_ObjectToWorld,v.vertex.xyz), 1 - v.vertexColor.a);
+				o.pos.xyz = distort(v.vertex.xyz, 1 - v.vertexColor.a);
 
 				o.pos = UnityObjectToClipPos(o.pos);
 
-				o.uv0 = TRANSFORM_TEX(v.texcoord0, _MainTex) + float2(_Time.y, 0);
+				o.uv0 = TRANSFORM_TEX(v.texcoord0, _MainTex) + float2(_Time.y*2, 0);
 				o.vertexColor = v.vertexColor;
 
 				return o;
@@ -81,7 +82,8 @@
 			{
 				float lt = i.vertexColor.a;
 				float4 color = tex2D(_MainTex, i.uv0) * i.vertexColor;
-				
+
+
 				return color;
 			}
 			ENDCG
