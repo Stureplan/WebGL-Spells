@@ -7,6 +7,7 @@ public class SpellFireball : Spell
     private Rigidbody rb;
     private Vector3 direction = Vector3.zero;
     public float speed = 10.0f;
+    public float explosionForce = 10.0f;
 
     public ParticleSystem childFlamesLocal;
     public ParticleSystem childFlamesGlobal;
@@ -26,8 +27,26 @@ public class SpellFireball : Spell
         transform.rotation = Quaternion.LookRotation(rb.velocity);
     }
 
+    private void Explosion()
+    {
+        Collider[] hits;
+
+        hits = Physics.OverlapSphere(transform.position, 4);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Rigidbody temp = hits[i].GetComponent<Rigidbody>();
+            if (temp != null)
+            {
+                temp.AddForce((hits[i].transform.position - transform.position).normalized * explosionForce, ForceMode.Impulse);
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        Explosion();
+
+
         ParticleSystem.MainModule module_local = childFlamesLocal.main;
         module_local.loop = false;
         module_local.startSize = 2.5f;

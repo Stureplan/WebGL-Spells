@@ -468,6 +468,7 @@ MonoBehaviour:
   timeout: 5
   target: {x: 0, y: 0, z: 0}
   speed: 10
+  explosionForce: 15
   childFlamesLocal: {fileID: 198867239946559072}
   childFlamesGlobal: {fileID: 198269482910914222}
   childTrailRenderer: {fileID: 96860123891126944}
