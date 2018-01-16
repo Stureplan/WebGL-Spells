@@ -31,13 +31,14 @@ public class SpellFireball : Spell
     {
         Collider[] hits;
 
-        hits = Physics.OverlapSphere(transform.position, 4);
+        int layerMask = ~(1 << LayerMask.NameToLayer("Spell"));
+        hits = Physics.OverlapSphere(transform.position, 4, layerMask);
         for (int i = 0; i < hits.Length; i++)
         {
             Rigidbody temp = hits[i].GetComponent<Rigidbody>();
             if (temp != null)
             {
-                temp.AddForce((hits[i].transform.position - transform.position).normalized * explosionForce, ForceMode.Impulse);
+                temp.AddForce((Vector3.up * 10)+((hits[i].transform.position - transform.position).normalized * explosionForce), ForceMode.Impulse);
             }
         }
     }
