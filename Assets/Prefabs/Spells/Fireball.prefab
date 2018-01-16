@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4272887713320578}
   - component: {fileID: 33465412637504398}
   - component: {fileID: 23829669396169920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fireball_stretched_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4237091291376232}
   - component: {fileID: 114989996246911466}
-  m_Layer: 0
+  - component: {fileID: 54387343116761078}
+  - component: {fileID: 135145269759754888}
+  m_Layer: 8
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +56,7 @@ GameObject:
   - component: {fileID: 4718219654125894}
   - component: {fileID: 198867239946559072}
   - component: {fileID: 199844389156434462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlamesLocal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +73,7 @@ GameObject:
   - component: {fileID: 4494564679853022}
   - component: {fileID: 198491835811337498}
   - component: {fileID: 199551804574417272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4992846079967322}
   - component: {fileID: 96860123891126944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +106,7 @@ GameObject:
   - component: {fileID: 4757722098425910}
   - component: {fileID: 33145779369394564}
   - component: {fileID: 23220169896389124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fireball_stretched_tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4037220471553156}
   - component: {fileID: 114846483310130196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,8 +139,8 @@ GameObject:
   - component: {fileID: 4606667745943136}
   - component: {fileID: 198269482910914222}
   - component: {fileID: 199036800785134864}
-  m_Layer: 0
-  m_Name: Flames
+  m_Layer: 8
+  m_Name: FlamesGlobal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279397016047080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4037220471553156}
@@ -333,6 +335,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069257360734362}
   m_Mesh: {fileID: 4300000, guid: 056426db977ac0745bf3df5044cd90a7, type: 3}
+--- !u!54 &54387343116761078
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279397016047080}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!96 &96860123891126944
 TrailRenderer:
   serializedVersion: 2
@@ -366,10 +383,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.5
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -381,7 +398,7 @@ TrailRenderer:
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: 0.41000366
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -391,7 +408,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.8455882, g: 0.33240366, b: 0, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 0.7647059}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -407,7 +424,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 9830
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -416,7 +433,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -448,7 +465,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ade8b5529e201418005de461a5d97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeout: 5
   target: {x: 0, y: 0, z: 0}
+  speed: 10
+  childFlamesLocal: {fileID: 198867239946559072}
+  childFlamesGlobal: {fileID: 198269482910914222}
+  childTrailRenderer: {fileID: 96860123891126944}
+--- !u!135 &135145269759754888
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279397016047080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: -1.33}
 --- !u!198 &198269482910914222
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -508,7 +542,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1251385376
+  randomSeed: -907203306
   InitialModule:
     serializedVersion: 3
     enabled: 1
