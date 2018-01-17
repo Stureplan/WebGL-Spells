@@ -93,14 +93,14 @@ public class SpellFireball : Spell
         childFlamesGlobal.transform.SetParent(null);
         childTrailRenderer.transform.SetParent(null);
 
-        Destroy(childFlamesLocal.gameObject, 1.5f);
-        Destroy(childFlamesGlobal.gameObject, 1.5f);
-        Destroy(childTrailRenderer.gameObject, 1.5f);
+        Destroy(childFlamesLocal.gameObject, 3);
+        Destroy(childFlamesGlobal.gameObject, 3);
+        Destroy(childTrailRenderer.gameObject, 3);
 
         other.gameObject.AddComponent<FireballEffect>().material = burningMaterial;
 
         GameObject go = Instantiate(sparksPrefab, transform.localPosition, Quaternion.identity);
-        Destroy(go, 1.5f);
+        Destroy(go, 3);
 
         Destroy(gameObject);
     }
