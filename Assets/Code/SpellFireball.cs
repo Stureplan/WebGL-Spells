@@ -24,6 +24,16 @@ public class SpellFireball : Spell
         rb.velocity = direction * speed;
     }
 
+    private Color RandomColor()
+    {
+        float red= Random.Range(0.5f, 1.0f);
+        float green = Random.Range(0.0f, 0.75f);
+        float blue = Random.Range(0.0f, 0.25f);
+
+        Color c = new Color(red, green, blue);
+        return c;
+    }
+
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.LookRotation(rb.velocity);
@@ -45,9 +55,30 @@ public class SpellFireball : Spell
         }
     }
 
+    private void SetColors(Collider collider)
+    {
+        MeshFilter mf = collider.GetComponent<MeshFilter>();
+        Mesh m = mf.mesh;
+
+        if (m.colors.Length < 1)
+        {
+            int vertexCount = m.vertexCount;
+            Color[] colors = new Color[vertexCount];
+            for (int i = 0; i < vertexCount; i++)
+            {
+                colors[i] = RandomColor();
+            }
+
+            m.colors = colors;
+            mf.sharedMesh = m;
+
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Explosion();
+        SetColors(other);
 
 
         ParticleSystem.MainModule module_local = childFlamesLocal.main;
