@@ -13,6 +13,8 @@ public class Caster : MonoBehaviour
     public Transform castOrigin;
     public Camera castCamera;
 
+    private bool playing = true;
+
     public void PreviousSpell()
     {
         current--;
@@ -50,6 +52,19 @@ public class Caster : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CastSpell();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            playing = !playing;
+            if (playing == false)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
     }
 

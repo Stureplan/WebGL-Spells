@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Flame_Distorted
+  m_Name: fireball_burning
   m_Shader: {fileID: 4800000, guid: 57c21705195905a4b86b8ccec0b88bd9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,16 +19,23 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: f12cadb736710244095d82f6bdb8dde0, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: e378e599732dae44fb1c47041c340abe, type: 3}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Bloom: 0.5
+    - _Cutoff: 0.5
+    - _Glossiness: 0
     - _InvFade: 1
+    - _Metallic: 0
     - _Multiplier: 1.5
+    - _Shakiness: 0
+    - _Speed: 0
+    - _SpeedX: 0
     m_Colors:
-    - _Intensity: {r: 0, g: -0.15, b: 0, a: -0.2}
+    - _Intensity: {r: 0, g: 0.1, b: 0, a: -0.4}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}

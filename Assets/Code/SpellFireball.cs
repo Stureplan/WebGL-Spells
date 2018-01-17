@@ -12,6 +12,8 @@ public class SpellFireball : Spell
     public ParticleSystem childFlamesLocal;
     public ParticleSystem childFlamesGlobal;
     public TrailRenderer childTrailRenderer;
+    public Material burningMaterial;
+    public GameObject sparksPrefab;
 
     public override void SetTarget(Vector3 pos)
     {
@@ -63,6 +65,11 @@ public class SpellFireball : Spell
         Destroy(childFlamesLocal.gameObject, 1.5f);
         Destroy(childFlamesGlobal.gameObject, 1.5f);
         Destroy(childTrailRenderer.gameObject, 1.5f);
+
+        other.gameObject.AddComponent<FireballEffect>().material = burningMaterial;
+
+        GameObject go = Instantiate(sparksPrefab, transform.localPosition, Quaternion.identity);
+        Destroy(go, 1.5f);
 
         Destroy(gameObject);
     }

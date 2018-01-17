@@ -5,6 +5,7 @@
 		_MainTex ("Texture", 2D) = "white" {}
 		_NoiseTex("Noise Texture", 2D)="white"{}
 		_Intensity("Intensity", Vector) = (1,1,0,0)
+		_Multiplier("Emission Multiplier", Float) = 1
 	}
 	SubShader
 	{
@@ -49,6 +50,7 @@
 			float4 _MainTex_ST;
 			float4 _NoiseTex_ST;
 			float4 _Intensity;
+			float  _Multiplier;
 
 
 			
@@ -85,7 +87,7 @@
 				clip(n);
 				//float a = lerp(0, (lt*color.a), n * 10);
 				float3 emissive = (color.rgb * i.vertexColor.rgb);// *(color.a * lt);
-
+				emissive *= _Multiplier;
 
 				return float4(emissive,0);
 			}

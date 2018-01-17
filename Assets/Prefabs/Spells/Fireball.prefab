@@ -472,6 +472,9 @@ MonoBehaviour:
   childFlamesLocal: {fileID: 198867239946559072}
   childFlamesGlobal: {fileID: 198269482910914222}
   childTrailRenderer: {fileID: 96860123891126944}
+  burningMaterial: {fileID: 2100000, guid: 4c33dd2d8ff1e2e4bb41ed1d82674e2b, type: 2}
+  sparksPrefab: {fileID: 1210684664472050, guid: 57c9b3e1a3e0ea34394bce4088ae70f8,
+    type: 2}
 --- !u!135 &135145269759754888
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -633,7 +636,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.51724136, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.91561866, b: 0.8088235, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1446,16 +1449,16 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 0.5176471, b: 0, a: 1}
+        key2: {r: 1, g: 0.5176471, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime1: 13107
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -1470,7 +1473,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
