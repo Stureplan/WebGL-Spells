@@ -6,7 +6,7 @@
 		_NoiseTex("Noise Texture", 2D) = "white" {}
 		_Frequency("Frequency", Float) = 1
 		_Amplitude("Amplitude", Float) = 1
-
+		_ColorStrength("Color Strength", Float) = 1
 	}
 	SubShader
 	{
@@ -50,6 +50,7 @@
 			float4 _MainTex_ST;
 			float _Frequency;
 			float _Amplitude;
+			float _ColorStrength;
 
 
 			float rand(float3 co)
@@ -91,7 +92,7 @@
 
 				float4 noise = tex2D(_NoiseTex, i.uv0);
 
-				color.rgb *= lt * noise.r;
+				color.rgb *= lt * noise.r * _ColorStrength;
 
 				return color;
 			}

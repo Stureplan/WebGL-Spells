@@ -28,6 +28,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amplitude: 0.5
+    - _ColorStrength: 1
     - _Frequency: 1
     - _Intensity: 1
     m_Colors: []

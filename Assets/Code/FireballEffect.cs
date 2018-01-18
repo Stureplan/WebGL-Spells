@@ -28,7 +28,7 @@ public class FireballEffect : MonoBehaviour
         material = mr.materials[mr.materials.Length - 1];
         material.SetFloat("_Multiplier", 1.5f);
 
-        StartCoroutine(Timer(material, 1.5f));
+        StartCoroutine(Timer(material, 4));
         StartCoroutine(Scroller(material));
     }
 
@@ -38,7 +38,8 @@ public class FireballEffect : MonoBehaviour
         while (t > 0.0f)
         {
             t -= Time.deltaTime;
-            mat.SetFloat("_Multiplier", t);
+            float mult = Mathf.Clamp01(t);
+            mat.SetFloat("_Multiplier", mult);
 
             yield return null;
         }

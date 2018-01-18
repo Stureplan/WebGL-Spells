@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4992846079967322}
   - component: {fileID: 96860123891126944}
+  - component: {fileID: 114150659686325760}
   m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
@@ -441,6 +442,22 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114150659686325760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497123989007124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a2b0164bdae6548a028d3027b23a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererComponent: {fileID: 96860123891126944}
+  property: _ColorStrength
+  startValue: 1
+  endValue: 0
+  power: 1
 --- !u!114 &114846483310130196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -453,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: {x: 0, y: 0, z: 1}
-  angle: 10
+  angle: 3
 --- !u!114 &114989996246911466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -467,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeout: 5
   target: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 13
   explosionForce: 15
   childFlamesLocal: {fileID: 198867239946559072}
   childFlamesGlobal: {fileID: 198269482910914222}
@@ -475,6 +492,8 @@ MonoBehaviour:
   childTrailRenderer: {fileID: 96860123891126944}
   burningMaterial: {fileID: 2100000, guid: 4c33dd2d8ff1e2e4bb41ed1d82674e2b, type: 2}
   sparksPrefab: {fileID: 1210684664472050, guid: 57c9b3e1a3e0ea34394bce4088ae70f8,
+    type: 2}
+  flamesStayingPrefab: {fileID: 1736519952527894, guid: 4b0a7906d6ab09342a8e7859ea1ccd10,
     type: 2}
 --- !u!135 &135145269759754888
 SphereCollider:

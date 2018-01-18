@@ -15,6 +15,7 @@ public class SpellFireball : Spell
     public TrailRenderer childTrailRenderer;
     public Material burningMaterial;
     public GameObject sparksPrefab;
+    public GameObject flamesStayingPrefab;
 
     public override void SetTarget(Vector3 pos)
     {
@@ -56,31 +57,9 @@ public class SpellFireball : Spell
         }
     }
 
-    private void SetColors(Collider collider)
-    {
-        MeshFilter mf = collider.GetComponent<MeshFilter>();
-        Mesh m = mf.mesh;
-
-        if (m.colors.Length < 1)
-        {
-            int vertexCount = m.vertexCount;
-            Color[] colors = new Color[vertexCount];
-            for (int i = 0; i < vertexCount; i++)
-            {
-                colors[i] = RandomColor();
-            }
-
-            m.colors = colors;
-            mf.sharedMesh = m;
-
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Explosion();
-        SetColors(other);
-
 
         ParticleSystem.MainModule module_local = childFlamesLocal.main;
         module_local.loop = false;
@@ -89,6 +68,12 @@ public class SpellFireball : Spell
 
         ParticleSystem.MainModule module_global = childFlamesGlobal.main;
         module_global.loop = false;
+
+        FadeShaderProperty[] fades = childTrailRenderer.GetComponents<FadeShaderProperty>();
+        for (int i = 0; i < fades.Length; i++)
+        {
+            fades[i].Fade();
+        }
 
         childFlamesSparks.Stop();
 
@@ -106,6 +91,9 @@ public class SpellFireball : Spell
 
         GameObject go = Instantiate(sparksPrefab, transform.localPosition, Quaternion.identity);
         Destroy(go, 3);
+
+        GameObject go1 = Instantiate(flamesStayingPrefab, transform.localPosition, Quaternion.identity);
+        Destroy(go1, 3);
 
         Destroy(gameObject);
     }
