@@ -11,6 +11,7 @@ public class SpellFireball : Spell
 
     public ParticleSystem childFlamesLocal;
     public ParticleSystem childFlamesGlobal;
+    public ParticleSystem childFlamesSparks;
     public TrailRenderer childTrailRenderer;
     public Material burningMaterial;
     public GameObject sparksPrefab;
@@ -89,12 +90,16 @@ public class SpellFireball : Spell
         ParticleSystem.MainModule module_global = childFlamesGlobal.main;
         module_global.loop = false;
 
+        childFlamesSparks.Stop();
+
         childFlamesLocal.transform.SetParent(null);
         childFlamesGlobal.transform.SetParent(null);
+        childFlamesSparks.transform.SetParent(null);
         childTrailRenderer.transform.SetParent(null);
 
         Destroy(childFlamesLocal.gameObject, 3);
         Destroy(childFlamesGlobal.gameObject, 3);
+        Destroy(childFlamesSparks.gameObject, 3);
         Destroy(childTrailRenderer.gameObject, 3);
 
         other.gameObject.AddComponent<FireballEffect>().material = burningMaterial;
