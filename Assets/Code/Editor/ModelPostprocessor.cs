@@ -9,9 +9,9 @@ public class ModelPostprocessor : AssetPostprocessor
     {
         ModelImporter importer = assetImporter as ModelImporter;
 
-        importer.animationType = ModelImporterAnimationType.None;
-        importer.generateAnimations = ModelImporterGenerateAnimations.None;
-        importer.importAnimation = false;
+        //importer.animationType = ModelImporterAnimationType.None;
+        //importer.generateAnimations = ModelImporterGenerateAnimations.None;
+        //importer.importAnimation = false;
         importer.importMaterials = false;
 
         importer.useFileScale = false;
