@@ -485,7 +485,7 @@ MonoBehaviour:
   timeout: 5
   target: {x: 0, y: 0, z: 0}
   speed: 13
-  explosionForce: 15
+  explosionForce: 25
   childFlamesLocal: {fileID: 198867239946559072}
   childFlamesGlobal: {fileID: 198269482910914222}
   childFlamesSparks: {fileID: 198491835811337498}

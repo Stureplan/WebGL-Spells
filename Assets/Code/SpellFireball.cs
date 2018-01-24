@@ -52,7 +52,7 @@ public class SpellFireball : Spell
             Rigidbody temp = hits[i].GetComponent<Rigidbody>();
             if (temp != null)
             {
-                temp.AddForce((Vector3.up * 10)+((hits[i].transform.position - transform.position).normalized * explosionForce), ForceMode.Impulse);
+                temp.AddForce((Vector3.up * 15)+((hits[i].transform.position - transform.position).normalized * explosionForce), ForceMode.Impulse);
             }
         }
     }
@@ -77,10 +77,10 @@ public class SpellFireball : Spell
 
         childFlamesSparks.Stop();
 
-        childFlamesLocal.transform.SetParent(null);
-        childFlamesGlobal.transform.SetParent(null);
-        childFlamesSparks.transform.SetParent(null);
-        childTrailRenderer.transform.SetParent(null);
+        childFlamesLocal.transform.SetParent(Spell.CleanupTransform());
+        childFlamesGlobal.transform.SetParent(Spell.CleanupTransform());
+        childFlamesSparks.transform.SetParent(Spell.CleanupTransform());
+        childTrailRenderer.transform.SetParent(Spell.CleanupTransform());
 
         Destroy(childFlamesLocal.gameObject, 3);
         Destroy(childFlamesGlobal.gameObject, 3);

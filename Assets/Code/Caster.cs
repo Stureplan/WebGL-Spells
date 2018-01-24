@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Caster : MonoBehaviour
 {
     /* ===== Spell List */
     public List<GameObject> spellPrefabs;
+    public List<GameObject> targetPrefabs;
     public GameObject currentSpell;
+    public GameObject currentTarget;
+    public GameObject cleanupObject;
     private int current = 0;
 
     /* ===== Casting    */
@@ -24,6 +28,15 @@ public class Caster : MonoBehaviour
         }
 
         currentSpell = spellPrefabs[current];
+        if (currentTarget != null)
+        {
+            Destroy(currentTarget);
+            foreach (Transform t in cleanupObject.transform)
+            {
+                Destroy(t.gameObject);
+            }
+        }
+        currentTarget = Instantiate(targetPrefabs[current]);
     }
 
     public void NextSpell()
@@ -35,6 +48,11 @@ public class Caster : MonoBehaviour
         }
 
         currentSpell = spellPrefabs[current];
+        if (currentTarget != null)
+        {
+            Destroy(currentTarget);
+        }
+        currentTarget = Instantiate(targetPrefabs[current]);
     }
 
     public void CastSpell()
@@ -42,6 +60,7 @@ public class Caster : MonoBehaviour
         Vector3 target = FindTarget();
         Quaternion rot = Quaternion.LookRotation((target-castOrigin.position).normalized, Vector3.up);
         GameObject spellObject = Instantiate(currentSpell, castOrigin.position, rot);
+        spellObject.transform.SetParent(Spell.CleanupTransform());
 
         Spell spell = spellObject.GetComponent<Spell>();
         spell.SetTarget(target);
@@ -51,6 +70,13 @@ public class Caster : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                // No crappy UI hits, ignore them.
+                return;
+            }
+
+
             CastSpell();
         }
 

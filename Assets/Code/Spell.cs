@@ -11,4 +11,16 @@ public class Spell : MonoBehaviour
     {
         Destroy(gameObject, timeout);
     }
+
+
+    private static GameObject cleanupObject;
+    public static Transform CleanupTransform()
+    {
+        if (cleanupObject == null)
+        {
+            cleanupObject = GameObject.FindGameObjectWithTag("Cleanup");
+        }
+
+        return cleanupObject.transform;
+    }
 }
