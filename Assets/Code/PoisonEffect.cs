@@ -10,11 +10,13 @@ public class PoisonEffect : MonoBehaviour
     private Material material;
 
     float dissolve_timer = 1.1f;
-    float timescale = 1.0f;
+    float timescale = 2.0f;
     public void StartDissolve()
     {
         material = draugr.GetComponent<SkinnedMeshRenderer>().material;
         StartCoroutine(Dissolve(dissolve_timer));
+
+        GetComponentInChildren<ParticleSystem>().Play();
     }
 
     private IEnumerator Dissolve(float timer)

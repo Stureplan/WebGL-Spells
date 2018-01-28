@@ -109,7 +109,6 @@
 				// Combine
 				fg.rgb = lerp(fg.rgb, dt.rgb, dt.a);
 				bg.rgb = lerp(bg.rgb, fg.rgb, fg.a);
-
 				bg.rgb = lerp(bg.rgb, hl.rgb, hl.a);
 
 				

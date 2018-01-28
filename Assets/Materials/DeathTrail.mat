@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FlameTrail_Distorted
-  m_Shader: {fileID: 4800000, guid: fb2aa18272cabe840b8244efcedc0e66, type: 3}
+  m_Name: DeathTrail
+  m_Shader: {fileID: 4800000, guid: f9ed69d76c9a5ba4bbec1774c3797e80, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,11 +19,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f3e92d3a7d947544e8c7e9360543b144, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8feb56e8e9c04ef4286e9c84cdb6c375, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: -0.903766, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: c95d4ec67787add439a3583da4ec03ee, type: 3}
+        m_Texture: {fileID: 2800000, guid: 220a97fbff6990148842fa914912c977, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -31,4 +31,7 @@ Material:
     - _ColorStrength: 1
     - _Frequency: 1
     - _Intensity: 1
-    m_Colors: []
+    - _InvFade: 1
+    m_Colors:
+    - _Intensity: {r: 1, g: 1, b: 0, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
