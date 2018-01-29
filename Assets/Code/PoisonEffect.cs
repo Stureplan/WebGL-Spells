@@ -10,7 +10,7 @@ public class PoisonEffect : MonoBehaviour
     private Material material;
 
     float dissolve_timer = 1.1f;
-    float timescale = 2.0f;
+    float timescale = 5.0f;
     public void StartDissolve()
     {
         material = draugr.GetComponent<SkinnedMeshRenderer>().material;
@@ -40,7 +40,7 @@ public class PoisonEffect : MonoBehaviour
         {
             //bones[i].SetParent(Spell.CleanupTransform());
             bones[i].gameObject.AddComponent<BoxCollider>().size = new Vector3(10, 2, 2);
-            bones[i].gameObject.AddComponent<Rigidbody>();
+            bones[i].gameObject.AddComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(0.0f, 1.0f), Random.Range(0.5f, 1.5f)) * 5, ForceMode.Impulse);
 
         }
 
