@@ -16,8 +16,18 @@ public class Caster : MonoBehaviour
     /* ===== Casting    */
     public Transform castOrigin;
     public Camera castCamera;
+    public ParticleSystem spellFlame;
+    private Material spellFlameMaterial;
 
     private bool playing = true;
+    private Color currentFlameColor;
+    private float colorTimer = 0.5f;
+    private Coroutine coroutine;
+
+    private void Start()
+    {
+        spellFlameMaterial = spellFlame.GetComponent<Renderer>().material;
+    }
 
     public void PreviousSpell()
     {
@@ -37,6 +47,12 @@ public class Caster : MonoBehaviour
             }
         }
         currentTarget = Instantiate(targetPrefabs[current]);
+
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(ChangeFlameColor(colorTimer, currentSpell.GetComponent<Spell>().spellColor));
     }
 
     public void NextSpell()
@@ -53,6 +69,26 @@ public class Caster : MonoBehaviour
             Destroy(currentTarget);
         }
         currentTarget = Instantiate(targetPrefabs[current]);
+
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(ChangeFlameColor(colorTimer, currentSpell.GetComponent<Spell>().spellColor));
+    }
+
+    private IEnumerator ChangeFlameColor(float timer, Color target)
+    {
+        float t = 0.0f;
+
+        while (t < timer)
+        {
+            t += Time.deltaTime;
+            spellFlameMaterial.color = Color.Lerp(currentFlameColor, target, t / timer);
+            yield return null;
+        }
+
+        currentFlameColor = spellFlameMaterial.color;
     }
 
     public void CastSpell()

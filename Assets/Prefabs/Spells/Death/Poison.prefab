@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeout: 5
   target: {x: 0, y: 0, z: 0}
+  spellColor: {r: 0, g: 1, b: 0.21568628, a: 1}
   speed: 12
   poisonImpact: {fileID: 1249845024036318, guid: 97f12863fe7ecdc4f9b810d2f6f395a7,
     type: 2}
