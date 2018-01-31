@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellFrostshard : Spell
@@ -9,6 +8,7 @@ public class SpellFrostshard : Spell
     public float speed = 10.0f;
 
     public GameObject[] stayingChildren;
+    public GameObject frozenSphere;
 
     public override void SetTarget(Vector3 pos)
     {
@@ -29,9 +29,18 @@ public class SpellFrostshard : Spell
 
     private void OnTriggerEnter(Collider other)
     {
-        Animation anim = other.GetComponent<Animation>();
+        if (other.GetComponentInChildren<FrostshardEffect>() == null)
+        {
+            Animation anim = other.GetComponent<Animation>();
+            anim.Stop();
+            GameObject go = Instantiate(frozenSphere, other.transform.position, other.transform.rotation);
+            go.transform.localScale = other.transform.localScale * 0.65f;
+            go.transform.SetParent(other.transform);
+            go.GetComponent<FrostshardEffect>().desiredScale = other.transform.localScale;
+        }
 
-        anim.Stop();
+
+
 
 
         for (int i = 0; i < stayingChildren.Length; i++)
@@ -56,6 +65,9 @@ public class SpellFrostshard : Spell
 
         }
 
+
+        StartCoroutine(FadeShard(5.0f));
+
         transform.SetParent(other.transform);
         Destroy(GetComponent<BoxCollider>());
         Destroy(rb);
@@ -78,6 +90,26 @@ public class SpellFrostshard : Spell
         }
 
         Destroy(go);
-        Destroy(this);
+
+    }
+
+    private IEnumerator FadeShard(float timer)
+    {
+        float t = 0.0f;
+
+        Vector3 originalPos = transform.position;
+        Vector3 lerpedPos = transform.position += (transform.forward * 0.5f);
+        Vector3 originalScl = transform.localScale;
+
+        while (t < timer)
+        {
+            transform.localScale = Vector3.Lerp(originalScl, Vector3.zero, t / timer);
+            transform.position = Vector3.Lerp(originalPos, lerpedPos, t / timer);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

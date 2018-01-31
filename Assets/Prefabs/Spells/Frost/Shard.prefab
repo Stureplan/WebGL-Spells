@@ -344,6 +344,8 @@ MonoBehaviour:
   - {fileID: 1872271447527468}
   - {fileID: 1462855126487592}
   - {fileID: 1210732174805660}
+  frozenSphere: {fileID: 1541158028211182, guid: 940243fcd643da74cb72b4a00a849c69,
+    type: 2}
 --- !u!114 &114755506715927016
 MonoBehaviour:
   m_ObjectHideFlags: 1
