@@ -26,16 +26,6 @@ public class SpellFireball : Spell
         rb.velocity = direction * speed;
     }
 
-    private Color RandomColor()
-    {
-        float red= Random.Range(0.5f, 1.0f);
-        float green = Random.Range(0.0f, 0.75f);
-        float blue = Random.Range(0.0f, 0.25f);
-
-        Color c = new Color(red, green, blue);
-        return c;
-    }
-
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.LookRotation(rb.velocity);

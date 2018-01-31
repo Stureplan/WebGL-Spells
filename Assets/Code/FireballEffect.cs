@@ -7,11 +7,11 @@ public class FireballEffect : MonoBehaviour
     public Material material;
     public Vector2 uv_speed = new Vector2(-1, -2);
     private Vector2 uv_offset;
-    MeshRenderer mr;
+    Renderer mr;
 
     private void Start()
     {
-        mr = GetComponent<MeshRenderer>();
+        mr = GetComponentInChildren<Renderer>();
         Material[] materials = mr.materials;
         Material[] newMaterials = new Material[materials.Length+1];
 
