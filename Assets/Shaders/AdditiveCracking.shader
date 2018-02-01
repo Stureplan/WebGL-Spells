@@ -10,7 +10,7 @@
 	}
 	SubShader
 	{
-		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" "DisableBatching" = "True" }
 		Blend SrcAlpha One
 		ColorMask RGB
 		AlphaTest Greater .01
@@ -77,7 +77,7 @@
 
 				fixed4 crack = tex2D(_CrackTex, (i.uv*1.5));
 
-				crack *= _CrackAmount*0.2;
+				crack *= _CrackAmount*0.2*2;
 				fixed4 color = (2 * i.color * c * _Color);
 
 				color.rgb += crack.rgb;

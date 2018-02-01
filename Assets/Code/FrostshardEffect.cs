@@ -3,12 +3,30 @@ using UnityEngine;
 
 public class FrostshardEffect : MonoBehaviour
 {
+    public Renderer rend;
+    public GameObject shardEffect;
     public Vector3 desiredScale = Vector3.zero;
 
     private void Start()
     {
-        Destroy(gameObject, 2.0f);
         StartCoroutine(ScaleEffect(desiredScale, 0.1f));
+        StartCoroutine(FadeCracks(2.0f));
+    }
+
+    private IEnumerator FadeCracks(float timer)
+    {
+        float t = 0.0f;
+
+
+        while (t < timer)
+        {
+            rend.material.SetFloat("_CrackAmount", (t/timer));
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 
     private void OnDestroy()
@@ -24,6 +42,10 @@ public class FrostshardEffect : MonoBehaviour
                 Destroy(fx[i].gameObject);
             }
         }
+
+        GameObject go = Instantiate(shardEffect, transform.position, transform.rotation);
+        go.transform.SetParent(Spell.CleanupTransform());
+        Destroy(go, 3.0f);
     }
 
 

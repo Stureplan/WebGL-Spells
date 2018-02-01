@@ -40,7 +40,7 @@ public class SpellFrostshard : Spell
 
             go.transform.SetParent(other.transform);
             //go.GetComponent<FrostshardEffect>().desiredScale = other.transform.localScale;
-            go.GetComponent<FrostshardEffect>().desiredScale = Vector3.one;
+            go.GetComponent<FrostshardEffect>().desiredScale = Vector3.one*0.87f;
 
         }
 
