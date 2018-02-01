@@ -32,11 +32,16 @@ public class SpellFrostshard : Spell
         if (other.GetComponentInChildren<FrostshardEffect>() == null)
         {
             Animation anim = other.GetComponent<Animation>();
-            anim.Stop();
+            //anim.Stop();
+            anim["BallBounce"].speed = 0.0f;
             GameObject go = Instantiate(frozenSphere, other.transform.position, other.transform.rotation);
-            go.transform.localScale = other.transform.localScale * 0.65f;
+            //go.transform.localScale = other.transform.localScale * 0.65f;
+            go.transform.localScale = Vector3.one * 0.65f;
+
             go.transform.SetParent(other.transform);
-            go.GetComponent<FrostshardEffect>().desiredScale = other.transform.localScale;
+            //go.GetComponent<FrostshardEffect>().desiredScale = other.transform.localScale;
+            go.GetComponent<FrostshardEffect>().desiredScale = Vector3.one;
+
         }
 
 

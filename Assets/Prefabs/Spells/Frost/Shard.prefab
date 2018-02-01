@@ -338,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeout: 99
   target: {x: 0, y: 0, z: 0}
-  spellColor: {r: 0.45588237, g: 0.86490875, b: 1, a: 1}
+  spellColor: {r: 0.15294118, g: 0.6156863, b: 1, a: 1}
   speed: 30
   stayingChildren:
   - {fileID: 1872271447527468}
@@ -978,7 +978,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
