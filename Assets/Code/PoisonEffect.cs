@@ -30,6 +30,7 @@ public class PoisonEffect : MonoBehaviour
         }
 
         UnparentSkeleton();
+        GetComponentInChildren<ParticleSystem>(true).gameObject.SetActive(true);
     }
 
     private void UnparentSkeleton()

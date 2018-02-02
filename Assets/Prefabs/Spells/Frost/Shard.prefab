@@ -338,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeout: 99
   target: {x: 0, y: 0, z: 0}
-  spellColor: {r: 0, g: 0.5462966, b: 1, a: 1}
+  spellColor: {r: 0.20784314, g: 0.6392157, b: 1, a: 1}
   speed: 30
   stayingChildren:
   - {fileID: 1872271447527468}
