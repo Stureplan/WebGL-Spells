@@ -1436,9 +1436,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4859555350896000}
-  - component: {fileID: 95239162755115132}
   - component: {fileID: 136318727780606096}
   - component: {fileID: 114250282055535604}
+  - component: {fileID: 111234453656002554}
+  - component: {fileID: 114078885911757268}
   m_Layer: 0
   m_Name: skeleton_draugr
   m_TagString: Draugr
@@ -1454,9 +1455,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4436279660223430}
-  - component: {fileID: 95304346938253998}
   - component: {fileID: 136474790838499446}
   - component: {fileID: 114043115921285138}
+  - component: {fileID: 111747089842080076}
   m_Layer: 0
   m_Name: skeleton_draugr (2)
   m_TagString: Draugr
@@ -2503,9 +2504,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4859782909262904}
-  - component: {fileID: 95078364956147884}
   - component: {fileID: 136393218257453490}
   - component: {fileID: 114850115745299388}
+  - component: {fileID: 111861772286783996}
   m_Layer: 0
   m_Name: skeleton_draugr (1)
   m_TagString: Draugr
@@ -5289,57 +5290,54 @@ Transform:
   m_Father: {fileID: 4616432473046454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95078364956147884
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1885577966122310}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 06c3366fc25d5544aa4bcdecb8c07ddb, type: 3}
-  m_Controller: {fileID: 9100000, guid: 01e3d42954bce874c860dd3e325fe06c, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95239162755115132
-Animator:
-  serializedVersion: 3
+--- !u!111 &111234453656002554
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532916092780418}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 06c3366fc25d5544aa4bcdecb8c07ddb, type: 3}
-  m_Controller: {fileID: 9100000, guid: 01e3d42954bce874c860dd3e325fe06c, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95304346938253998
-Animator:
   serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  - {fileID: 7400000, guid: 83fa5922e8c147147a7544e9505952a6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &111747089842080076
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538637176274044}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 06c3366fc25d5544aa4bcdecb8c07ddb, type: 3}
-  m_Controller: {fileID: 9100000, guid: 01e3d42954bce874c860dd3e325fe06c, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  - {fileID: 7400000, guid: 83fa5922e8c147147a7544e9505952a6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &111861772286783996
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885577966122310}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 10e855c135fd31748bc5027d8673ee65, type: 2}
+  - {fileID: 7400000, guid: 83fa5922e8c147147a7544e9505952a6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114043115921285138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5354,6 +5352,17 @@ MonoBehaviour:
   draugr: {fileID: 1263032073422046}
   skeleton: {fileID: 1762465225280154}
   boneHierarchy: {fileID: 1794409289393914}
+--- !u!114 &114078885911757268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532916092780418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ffde6fadeabdd4080c4582865cb79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114250282055535604
 MonoBehaviour:
   m_ObjectHideFlags: 1

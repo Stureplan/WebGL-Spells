@@ -21,14 +21,14 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f3e92d3a7d947544e8c7e9360543b144, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: -0.903766, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: c95d4ec67787add439a3583da4ec03ee, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amplitude: 0.5
+    - _Amplitude: 0.1
     - _ColorStrength: 1
-    - _Frequency: 1
+    - _Frequency: 0.2
     - _Intensity: 1
     m_Colors: []

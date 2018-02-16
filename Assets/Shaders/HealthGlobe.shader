@@ -102,7 +102,7 @@
 				hl.a *= fg.a;
 
 				// Top wave stuff
-				fg.a *= 1 - step(_Health, y + wave);
+				fg.a *= 1 -step(_Health, y + wave);
 				hl.a *= smoothstep(_Health - 0.03, _Health + 0.05, y);
 
 

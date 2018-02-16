@@ -33,7 +33,7 @@ public class SpellPoison : Spell
     {
         if (other.tag == "Draugr")
         {
-            other.GetComponent<Animator>().SetTrigger("Death");
+            other.GetComponent<Animation>().Play("Death 1");
             other.GetComponent<PoisonEffect>().StartDissolve();
             GameObject go1 = Instantiate(poisonImpact, transform.position + transform.forward, transform.rotation);
             GameObject go2 = Instantiate(smokeImpact,  transform.position + transform.forward, transform.rotation);

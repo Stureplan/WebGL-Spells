@@ -1,4 +1,9 @@
-﻿Shader "Custom/Particles/ParticleTrailDistorted"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+
+Shader "Custom/Particles/ParticleTrailDistorted"
 {
 	Properties
 	{
@@ -61,12 +66,13 @@
 			float3 distort(float3 v, float t)
 			{
 				t *= 5;
-				v.x += (_Amplitude * sin(_Time.y*_Frequency + v.z)) * t;
+				float3 vertex = v;
+
+				vertex.x += (_Amplitude * sin(_Time.y*_Frequency + v.z)) * t;
 
 				//v.z += sin(_Time.y*_Frequency + v.z) * t * 0.1;
 
-
-				return v;
+				return vertex;
 			}
 
 			
@@ -74,8 +80,7 @@
 			{
 				VertexOutput o;
 				o.pos = v.vertex;
-
-				o.pos.xyz = distort(v.vertex.xyz, 1 - v.vertexColor.a);
+				o.pos.xyz = distort(o.pos.xyz, 1 - v.vertexColor.a);
 
 				o.pos = UnityObjectToClipPos(o.pos);
 
